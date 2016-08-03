@@ -9,15 +9,17 @@ namespace FluentDynamoDb.Mappers
     {
         public ClassMap<TType> Load<TType>()
         {
-            if (FluentDynamoDbConfiguration.ClassMapLocationAssembly == null)
-            {
-                throw new FluentDynamoDbMappingException(
-                    string.Format(
-                        "ClassMapLocationAssembly was not provided, you should run FluentDynamoDbConfiguration.Configure() to define a assembly location for mappers"));
-            }
+            var typeAssembly = typeof (TType).Assembly;
+
+            //if (FluentDynamoDbConfiguration.ClassMapLocationAssembly == null)
+            //{
+            //    throw new FluentDynamoDbMappingException(
+            //        string.Format(
+            //            "ClassMapLocationAssembly was not provided, you should run FluentDynamoDbConfiguration.Configure() to define a assembly location for mappers"));
+            //}
 
             var mappingType =
-                FluentDynamoDbConfiguration.ClassMapLocationAssembly.GetTypes()
+                (FluentDynamoDbConfiguration.ClassMapLocationAssembly ?? typeAssembly).GetTypes()
                     .FirstOrDefault(t => t.IsSubclassOf(typeof (ClassMap<TType>)));
             if (mappingType == null)
             {
