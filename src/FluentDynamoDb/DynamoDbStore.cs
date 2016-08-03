@@ -11,11 +11,15 @@ namespace FluentDynamoDb
         private readonly Table _entityTable;
         private readonly DynamoDbMapper<TEntity> _mapper;
 
-        public DynamoDbStore()
+        public DynamoDbStore() : this(new AmazonDynamoDBClient())
+        {   
+        }
+
+        public DynamoDbStore(AmazonDynamoDBClient dynamoDbClient)
         {
+            _amazonDynamoDbClient = dynamoDbClient;
             var rootConfiguration = LoadConfiguration<TEntity>();
 
-            _amazonDynamoDbClient = new AmazonDynamoDBClient();
             _entityTable = Table.LoadTable(_amazonDynamoDbClient, rootConfiguration.TableName);
             _mapper = new DynamoDbMapper<TEntity>(rootConfiguration.DynamoDbEntityConfiguration);
         }
