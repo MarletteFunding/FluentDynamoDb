@@ -18,18 +18,18 @@ namespace FluentDynamoDb
         {
         }
 
-        internal ClassMap(DynamoDbRootEntityConfiguration dynamoDbRootEntityConfiguration)
+        protected ClassMap(DynamoDbRootEntityConfiguration dynamoDbRootEntityConfiguration)
             : this(dynamoDbRootEntityConfiguration, new DynamoDbEntityConfiguration(), new ClassMapLoader())
         {
         }
 
-        internal ClassMap(DynamoDbRootEntityConfiguration dynamoDbRootEntityConfiguration,
+        protected ClassMap(DynamoDbRootEntityConfiguration dynamoDbRootEntityConfiguration,
             DynamoDbEntityConfiguration dynamoDbEntityConfiguration)
             : this(dynamoDbRootEntityConfiguration, dynamoDbEntityConfiguration, new ClassMapLoader())
         {
         }
 
-        internal ClassMap(DynamoDbRootEntityConfiguration dynamoDbRootEntityConfiguration,
+        protected ClassMap(DynamoDbRootEntityConfiguration dynamoDbRootEntityConfiguration,
             DynamoDbEntityConfiguration dynamoDbEntityConfiguration, IClassMapLoader classMapLoader)
         {
             _dynamoDbRootEntityConfiguration = dynamoDbRootEntityConfiguration;
@@ -110,17 +110,17 @@ namespace FluentDynamoDb
             return propertyInfo;
         }
 
-        internal IEnumerable<FieldConfiguration> GetMappingConfigurationFields()
+        protected internal IEnumerable<FieldConfiguration> GetMappingConfigurationFields()
         {
             return _dynamoDbEntityConfiguration.Fields;
         }
 
-        internal DynamoDbEntityConfiguration GetEntityConfiguration()
+        protected internal DynamoDbEntityConfiguration GetEntityConfiguration()
         {
             return _dynamoDbEntityConfiguration;
         }
 
-        internal DynamoDbRootEntityConfiguration GetRootConfiguration()
+        protected internal DynamoDbRootEntityConfiguration GetRootConfiguration()
         {
             _dynamoDbRootEntityConfiguration.DynamoDbEntityConfiguration = GetEntityConfiguration();
             return _dynamoDbRootEntityConfiguration;

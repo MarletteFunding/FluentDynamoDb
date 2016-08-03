@@ -21,7 +21,7 @@ namespace FluentDynamoDb
             ClassMapLoader = classMapLoader;
         }
 
-        internal DynamoDbRootEntityConfiguration LoadConfiguration<TEntity>()
+        protected internal DynamoDbRootEntityConfiguration LoadConfiguration<TEntity>()
         {
             if (!MapConfigurations.ContainsKey(typeof (TEntity)))
             {
