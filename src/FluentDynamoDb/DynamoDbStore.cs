@@ -5,7 +5,7 @@ using FluentDynamoDb.Mappers;
 namespace FluentDynamoDb
 {
     public class DynamoDbStore<TEntity, TKey> : DynamoDbStoreBase, IDynamoDbStore<TEntity, TKey>
-        where TEntity : class, new()
+        where TEntity : class, new() 
     {
         private readonly IAmazonDynamoDB _amazonDynamoDbClient;
         private readonly Table _entityTable;
@@ -31,6 +31,12 @@ namespace FluentDynamoDb
             return _mapper.ToEntity(document);
         }
 
+        public TEntity GetItem<THashKey, TRangeKey>(THashKey hashKey, TRangeKey rangeKey)
+        {
+            var document = _entityTable.GetItem((dynamic)hashKey, (dynamic)rangeKey);
+            return _mapper.ToEntity(document);
+        }
+
         public TEntity DeleteItem(TKey id)
         {
             dynamic idValue = id;
@@ -41,6 +47,17 @@ namespace FluentDynamoDb
 
             return _mapper.ToEntity(deletedDocument);
         }
+
+        public TEntity DeleteItem<THashKey, TRangeKey>(THashKey hashKey, TRangeKey rangeKey)
+        {
+            var deletedDocument = _entityTable.DeleteItem((dynamic)hashKey, (dynamic)rangeKey, new DeleteItemOperationConfig
+            {
+                ReturnValues = ReturnValues.AllOldAttributes
+            });
+
+            return _mapper.ToEntity(deletedDocument);
+        }
+
 
         public TEntity UpdateItem(TEntity entity)
         {
