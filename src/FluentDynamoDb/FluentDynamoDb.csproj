@@ -56,6 +56,7 @@
     <Compile Include="DynamoDbStoreBase.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="IDynamoDbStore.cs" />
+    <Compile Include="KeyTypes\CompoundKey.cs" />
     <Compile Include="Mappers\ClassMapLoader.cs" />
     <Compile Include="Mappers\DynamoDbEntityConfiguration.cs" />
     <Compile Include="Mappers\DynamoDbRootEntityConfiguration.cs" />
