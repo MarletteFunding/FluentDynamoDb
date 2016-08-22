@@ -5,3 +5,4 @@ Fluent, POCO friendly, convention-based mappings for DynamoDb. Get your fluent o
 Original Author:
 
 https://github.com/lfreneda/FluentDynamoDb/blob/master/example/FluentDynamoDb.Example/Program.cs
+ 
