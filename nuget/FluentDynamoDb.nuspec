@@ -6,7 +6,7 @@
     <authors>Clear Measure</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>FluentDynamoDb</description>
-    <dependencies />
+    <dependencies>
         <dependency id="AWSSDK.Core" version="3.1.8.1" />
         <dependency id="AWSSDK.DynamoDBv2" version="3.1.5.1"/>
     </dependencies>
