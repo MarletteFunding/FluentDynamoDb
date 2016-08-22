@@ -21,19 +21,15 @@ namespace FluentDynamoDb.Tests.Mappers
         }
 
         [Test]
-        public void LoadMapper_FluentDynamoDbConfigurationConfigureWasNotSet_ShouldThrowsException()
+        public void LoadMapper_FluentDynamoDbConfigurationConfigureWasNotSet_ShouldNotThrowException()
         {
+            //This condition is now allowed - ClassMap can load from the hosted assembly if configuration not defined.
             FluentDynamoDbConfiguration.Configure(null);
 
             var classMapLoader = new ClassMapLoader();
 
             Assert.That(() => classMapLoader.Load<Foo>(),
-                Throws.Exception
-                    .TypeOf<FluentDynamoDbMappingException>()
-                    .With
-                    .Message
-                    .EqualTo(
-                        "ClassMapLocationAssembly was not provided, you should run FluentDynamoDbConfiguration.Configure() to define a assembly location for mappers"));
+                Throws.Nothing);
         }
 
         public class Foo

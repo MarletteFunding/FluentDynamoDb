@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>FluentDynamoDb</id>
+    <version></version>
+    <authors>Clear Measure</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>FluentDynamoDb</description>
+    <dependencies>
+        <dependency id="AWSSDK.Core" version="3.1.8.1" />
+        <dependency id="AWSSDK.DynamoDBv2" version="3.1.5.1"/>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\src\FluentDynamoDb\bin\Release\FluentDynamoDb.dll" target="lib\FluentDynamoDb.dll" />
+    <file src="..\src\FluentDynamoDb\bin\Release\FluentDynamoDb.pdb" target="lib\FluentDynamoDb.pdb" />
+  </files>
+</package>

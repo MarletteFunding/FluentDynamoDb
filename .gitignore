@@ -3,7 +3,6 @@
 #################
 bin/
 obj/
-Tools/
 artifacts/
 .vs/
 src/.vs/
